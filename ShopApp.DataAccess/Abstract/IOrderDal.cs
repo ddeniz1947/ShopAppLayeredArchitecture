@@ -1,0 +1,13 @@
+﻿using ShopApp.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ShopApp.DataAccess.Abstract
+{
+    interface IOrderDal:IRepository<Order>
+    {
+        
+
+    }
+}
