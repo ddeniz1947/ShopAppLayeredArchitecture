@@ -12,6 +12,7 @@ using ShopApp.Business.Concrete;
 using ShopApp.DataAccess.Abstract;
 using ShopApp.DataAccess.Concrete.EFCore;
 using ShopApp.DataAccess.Concrete.Memory;
+using ShopAppUI.Middlewares;
 
 namespace ShopApp.WebUI
 {
@@ -49,8 +50,8 @@ namespace ShopApp.WebUI
                 app.UseDeveloperExceptionPage();
                 SeedDatabase.Seed();
             }
-            app.UseStaticFiles();
-
+            app.UseStaticFiles(); //wwwroot u dışarıya açmak için 
+            app.CustomStaticFiles(); //node_modules 'ü dışarıya açmak için
             app.UseRouting();
 
             // The equivalent of 'app.UseMvcWithDefaultRoute()'
