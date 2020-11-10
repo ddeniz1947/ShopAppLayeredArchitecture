@@ -8,8 +8,9 @@ namespace ShopApp.Business.Abstract
     public interface IProductService
     {
         Product GetById(int id);
+        Product GetProductDetails(int id);
         List<Product> GetAll();
-        List<Product> GetPopularProducts();
+        List<Product> GetProductsByCategory(string category,int page, int productCount);
         void Create(Product entity);
         void Update(Product entity);
         void Delete(Product entity);

@@ -28,19 +28,24 @@ namespace ShopAppUI.Controllers
             {
                 return NotFound();
             }
-            Product product = _productService.GetById(Convert.ToInt32(id));
+            Product product = _productService.GetProductDetails(Convert.ToInt32(id));
             if(product == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(new ProductDetailsModel()
+            {
+                Product = product,
+                Categories = product.ProductCategories.Select(i=>i.Category).ToList()
+            });
         }
 
-        public IActionResult List()
+        public IActionResult List(string category,int page = 1)
         {
+            const int productCount = 3;
             return View(new ProductListModel()
             {
-                Products = _productService.GetAll()
+                Products = _productService.GetProductsByCategory(category,page, productCount)
             });
         }
     }

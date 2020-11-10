@@ -34,9 +34,14 @@ namespace ShopApp.WebUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IProductDal, EFCoreProductDal>();
+            services.AddScoped<ICategoryDal, EFCoreCategoryDal>();
             services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<ICategoryService, CategoryManager>();
+
+
+            services.AddMvc(options => options.EnableEndpointRouting = false);//ESKI ROUTINGI KULLANMAK İÇİN GEREKLİ AYAR 
+
             services
-          // more specific than AddMvc()
           .AddControllersWithViews()
           .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
@@ -54,13 +59,29 @@ namespace ShopApp.WebUI
             app.CustomStaticFiles(); //node_modules 'ü dışarıya açmak için
             app.UseRouting();
 
-            // The equivalent of 'app.UseMvcWithDefaultRoute()'
-            app.UseEndpoints(endpoints =>
+            //BU KISIMDAKI ROUTING ESKI ROUTING KULLANIMI .net Core 2.2 vs.
+            app.UseMvc(routes =>
             {
-                endpoints.MapDefaultControllerRoute();
-                // Which is the same as the template
-                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                  name: "products",
+                  template: "products/{category?}",
+                  defaults: new {controller = "Shop",action="List"}
+                    );
+                routes.MapRoute(
+                  name: "default",
+                  template: "{controller=Home}/{action=Index}/{id?}"
+                    );
             });
+
+            // BU KISIMDAKİ ENDPOINT KULLANIMI YENI KULLANIM 3.1
+            //// The equivalent of 'app.UseMvcWithDefaultRoute()'
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapDefaultControllerRoute();
+            //    // Which is the same as the template
+            //    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            //});
 
         }
     }

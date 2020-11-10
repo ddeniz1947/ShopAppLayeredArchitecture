@@ -131,3 +131,4 @@ C:\Users\Deniz Can DINC\source\repos\ShopApp\ShopAppUI\obj\Debug\netcoreapp3.1\R
 C:\Users\Deniz Can DINC\source\repos\ShopApp\ShopAppUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_product.cshtml.g.cs
 C:\Users\Deniz Can DINC\source\repos\ShopApp\ShopAppUI\obj\Debug\netcoreapp3.1\Razor\Views\Shop\List.cshtml.g.cs
 C:\Users\Deniz Can DINC\source\repos\ShopApp\ShopAppUI\obj\Debug\netcoreapp3.1\Razor\Views\Shop\Details.cshtml.g.cs
+C:\Users\Deniz Can DINC\source\repos\ShopApp\ShopAppUI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CategoryList\Default.cshtml.g.cs
